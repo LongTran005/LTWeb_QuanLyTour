@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/tours")
 public class AdminTourController {
@@ -17,8 +19,17 @@ public class AdminTourController {
     }
 
     @GetMapping
-    public String listTours(Model model) {
-        model.addAttribute("tours", tourService.getAllTours());
+    public String listTours(Model model, @RequestParam(value = "keyword", required = false) String keyword) {
+        List<Tour> tours;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            tours = tourService.searchTours(keyword);
+        } else {
+            tours = tourService.getAllTours();
+        }
+
+        model.addAttribute("tours", tours);
+        model.addAttribute("keyword", keyword); // Để hiển thị lại từ khóa trên ô input sau khi tìm
         return "admin/tours";
     }
 

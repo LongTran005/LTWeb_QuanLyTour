@@ -19,10 +19,14 @@ public class Tour {
 
     private LocalDate startDate;
 
+    @Column(columnDefinition = "integer default 0")
+    private int currentPeople = 0;
+
     private int maxPeople;
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
 
     // ===== GETTER & SETTER =====
 
@@ -96,5 +100,13 @@ public class Tour {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getCurrentPeople() {
+        return currentPeople;
+    }
+
+    public void setCurrentPeople(int currentPeople) {
+        this.currentPeople = currentPeople;
     }
 }

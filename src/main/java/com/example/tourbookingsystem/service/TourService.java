@@ -24,7 +24,15 @@ public class TourService {
         return tourRepository.findById(id);
     }
 
+    public List<Tour> searchTours(String keyword) {
+        return tourRepository.findByNameContainingIgnoreCase(keyword);
+    }
+
     public Tour save(Tour tour) {
+        // Logic kiểm tra đơn giản:
+        if (tour.getCurrentPeople() > tour.getMaxPeople()) {
+            throw new RuntimeException("Số người hiện tại không được lớn hơn số người tối đa!");
+        }
         return tourRepository.save(tour);
     }
 
