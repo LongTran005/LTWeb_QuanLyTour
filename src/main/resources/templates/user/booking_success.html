@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Đặt tour thành công</title></head>
+
+<body>
+<div th:replace="layout :: header"></div>
+
+<h2>Đặt tour thành công!</h2>
+
+<p>Tour: <strong th:text="${tour.name}"></strong></p>
+<p>Khách hàng: <strong th:text="${booking.customerName}"></strong></p>
+<p>Số người: <strong th:text="${booking.numberOfPeople}"></strong></p>
+<p>Tổng tiền: <strong th:text="${booking.totalPrice}"></strong> VND</p>
+
+<a th:href="@{/}">Quay về trang chủ</a>
+
+</body>
+</html>

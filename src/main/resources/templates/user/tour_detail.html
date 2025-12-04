@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Chi tiết tour</title></head>
+
+<body>
+<div th:replace="layout :: header"></div>
+
+<h2 th:text="${tour.name}"></h2>
+<p>Địa điểm: <span th:text="${tour.location}"></span></p>
+<p>Số ngày: <span th:text="${tour.days}"></span></p>
+<p>Giá: <span th:text="${tour.price}"></span> VND</p>
+
+<a th:href="@{'/booking/tour/' + ${tour.id}}">Đặt tour ngay</a>
+
+</body>
+</html>
